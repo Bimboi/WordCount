@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import re
+import docx
 
 
 def start():
@@ -11,20 +12,35 @@ def start():
 
 
 def count_words():
+    # create a new dictionary
     dict1 = dict()
     try:
-        file = open(input("Enter filename or file directory: "))
-        for line in file:
-            alpha_num_list = filter(str.strip, [re.sub('[^a-zA-Z]+', '', _).lower() for _ in line.split()])
-            for word in alpha_num_list:
-                if word in dict1:
-                    dict1[word] = dict1[word] + 1
-                else:
-                    dict1[word] = 1
+        file = input("Enter filename or file directory: ")
+        if file[-3:] == "txt":
+            txt = open(file)
+            # read text file per enter line
+            for line in txt:
+                dict1 = get_dict(line)
 
+            txt.close()
+        elif file[-4:] == "docx":
+            doc = docx.Document(file)
+            full_text = []
+            for para in doc.paragraphs:
+                # join paragraphs into one line in index 0 of full_text
+                full_text.append(para.text)
+
+            dict1 = get_dict(full_text[0])
+        else:
+            raise FileNotFoundError
+
+        # sort in ascending order
         sorted_dict1 = sorted(dict1.items())
+        # separate words for x-labels and their count for y-labels
         sorted_words = list(item[0] for item in sorted_dict1)
         words_count = list(item[1] for item in sorted_dict1)
+
+        print(sorted_dict1)
 
         plt.figure(figsize=(22, 8))
         plt.bar(sorted_words, words_count)
@@ -37,8 +53,23 @@ def count_words():
         plt.tight_layout()
         plt.savefig('wc_figure.png', bbox_inches='tight', dpi=350)
 
-    except Exception:
+    except FileNotFoundError:
         print("File not found")
+
+
+def get_dict(words):
+    temp_dict = dict()
+    # for each enter line, split it to have a set of words
+    # for each word, remove special characters, start and end spaces, then format to lowercase
+    alpha_num_list = filter(str.strip, [re.sub('[^a-zA-Z]+', '', _).lower() for _ in words.split()])
+    for word in alpha_num_list:
+        if word in temp_dict:
+            temp_dict[word] = temp_dict[word] + 1
+        else:
+            # first time counting the word
+            temp_dict[word] = 1
+    print(temp_dict)
+    return temp_dict
 
 
 def again():
