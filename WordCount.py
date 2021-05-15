@@ -88,11 +88,11 @@ def get_figures(dict1, length):
 
         # first figure
         get_two_figures(first_sorted, second_sorted, first_count, second_count)
-        plt.savefig('wc_figure1.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure1.png', bbox_inches='tight', dpi=250)
 
         # second figure
         get_two_figures(third_sorted, fourth_sorted, third_count, fourth_count)
-        plt.savefig('wc_figure2.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure2.png', bbox_inches='tight', dpi=250)
 
     elif 150 > length > 100:
         # round down
@@ -109,11 +109,11 @@ def get_figures(dict1, length):
 
         # first figure
         get_two_figures(first_sorted, second_sorted, first_count, second_count)
-        plt.savefig('wc_figure1.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure1.png', bbox_inches='tight', dpi=250)
 
         # second figure
         get_one_figure(third_sorted, third_count)
-        plt.savefig('wc_figure2.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure2.png', bbox_inches='tight', dpi=250)
 
     elif length > 50:
         # round down
@@ -126,11 +126,11 @@ def get_figures(dict1, length):
         second_count = words_count[middle_index:]
 
         get_two_figures(first_sorted, second_sorted, first_count, second_count)
-        plt.savefig('wc_figure.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure.png', bbox_inches='tight', dpi=250)
 
     else:
         get_one_figure(sorted_words, words_count)
-        plt.savefig('wc_figure.png', bbox_inches='tight', dpi=250)
+        plt.savefig('wc-figures/wc_figure.png', bbox_inches='tight', dpi=250)
 
 
 def get_one_figure(sorted1, count1):
