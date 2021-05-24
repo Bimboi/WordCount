@@ -87,11 +87,11 @@ def get_figures(dict1, length):
         fourth_count = words_count[three_fourth_index:]
 
         # first figure
-        get_two_figures(first_sorted, second_sorted, first_count, second_count)
+        get_two_plots(first_sorted, second_sorted, first_count, second_count)
         plt.savefig('wc-figures/wc_figure1.png', bbox_inches='tight', dpi=200)
 
         # second figure
-        get_two_figures(third_sorted, fourth_sorted, third_count, fourth_count)
+        get_two_plots(third_sorted, fourth_sorted, third_count, fourth_count)
         plt.savefig('wc-figures/wc_figure2.png', bbox_inches='tight', dpi=200)
 
     elif 151 > length > 100:
@@ -108,11 +108,11 @@ def get_figures(dict1, length):
         third_count = words_count[two_third_index:]
 
         # first figure
-        get_two_figures(first_sorted, second_sorted, first_count, second_count)
+        get_two_plots(first_sorted, second_sorted, first_count, second_count)
         plt.savefig('wc-figures/wc_figure1.png', bbox_inches='tight', dpi=200)
 
         # second figure
-        get_one_figure(third_sorted, third_count)
+        get_one_plot(third_sorted, third_count)
         plt.savefig('wc-figures/wc_figure2.png', bbox_inches='tight', dpi=200)
 
     elif length > 50:
@@ -125,15 +125,15 @@ def get_figures(dict1, length):
         first_count = words_count[:middle_index]
         second_count = words_count[middle_index:]
 
-        get_two_figures(first_sorted, second_sorted, first_count, second_count)
+        get_two_plots(first_sorted, second_sorted, first_count, second_count)
         plt.savefig('wc-figures/wc_figure.png', bbox_inches='tight', dpi=200)
 
     else:
-        get_one_figure(sorted_words, words_count)
+        get_one_plot(sorted_words, words_count)
         plt.savefig('wc-figures/wc_figure.png', bbox_inches='tight', dpi=200)
 
 
-def get_one_figure(sorted1, count1):
+def get_one_plot(sorted1, count1):
     # figsize=(width, height)
     # barh - plot horizontal bar
     # grid(axis='x') - add only vertical lines of a grid
@@ -145,7 +145,7 @@ def get_one_figure(sorted1, count1):
     plt.grid(axis='x')
 
 
-def get_two_figures(sorted1, sorted2, count1, count2):
+def get_two_plots(sorted1, sorted2, count1, count2):
     fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(18, 9))
     ax1.barh(sorted1, count1)
     ax2.barh(sorted2, count2)
