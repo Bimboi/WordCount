@@ -94,7 +94,7 @@ def get_figures(dict1, length):
         get_two_figures(third_sorted, fourth_sorted, third_count, fourth_count)
         plt.savefig('wc-figures/wc_figure2.png', bbox_inches='tight', dpi=200)
 
-    elif 150 > length > 100:
+    elif 151 > length > 100:
         # round down
         one_third_index = length // 3
         two_third_index = one_third_index * 2
