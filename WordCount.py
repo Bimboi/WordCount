@@ -31,7 +31,7 @@ def count_words():
 
             dict1 = get_dict(full_text)
         else:
-            raise FileNotFoundError
+            raise Exception
 
         length = len(dict1)
         print("Unique word count: " + str(length))
